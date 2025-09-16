@@ -5,14 +5,22 @@ yesnolist = []
 
 def isVPS(vps_str):
     global yesnolist
+    stack = []
     result = vps_str
-    while result.count("()"):
-        result = result.replace("()", "")
-    if result:
+    for i in range(len(result)):
+        if result[i] == "(":
+            stack.append("(")
+        elif result[i] == ")":
+            if stack:
+                stack.pop()
+            else:
+                yesnolist.append("NO")
+                return
+    if stack:
         yesnolist.append("NO")
     else:
         yesnolist.append("YES")
-
+    
 
 
 num = int(input())
