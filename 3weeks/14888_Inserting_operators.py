@@ -31,7 +31,6 @@ def dfs(result, num):
             operators[i] -= 1
             dfs(elementary_arithmetic(i, result, num_list[num+1]), num + 1)
             operators[i] += 1
-            
 
 #최종
 dfs(num_list[0], 0)
